@@ -26,7 +26,7 @@ def decode_ip_packet(s):
     d['total_len'] = socket.ntohs(struct.unpack('H', s[2:4])[0])
     d['id'] = socket.ntohs(struct.unpack('H', s[4:6])[0])
     d['flags'] = (ord(s[6]) & 0xe0) >> 5
-    d['fragment_offset'] = socket.htons(struct.unpack('H', s[6, 8])[0] & 0x1f)
+    d['fragment_offset'] = socket.htons(struct.unpack('H', s[6：8])[0] & 0x1f)
     d['ttl'] = ord(s[8])
     d['protocol'] = ord(s[9])
     d['checksum'] = socket.htons(struct.unpack('H', s[10:12])[0])
@@ -87,7 +87,7 @@ def capture():
         if sys.argv[1] == '-d' or sys.argv[1] == '--dev':
             finddev.print_all_devs()
         elif sys.argv[1] == '-h' or sys.argv[1] == '--help':
-            finddev.print_all_devs()
+            finddev.print_help()
         else:
             print '[-] Wrong order " %s' % sys.argv[1:], '"'
             print_help()
